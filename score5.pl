@@ -14,13 +14,7 @@ $bgd{'G'} = 0.23;
 $bgd{'T'} = 0.27; 
 
 
-my $str = uc($inputfile);
-if ($usemaxent) { 
- print sprintf("%.2f",&log2(&scoreconsensus($str)*$me2x5{$seq{&getrest($str)}}))."\n";
-}
 
-
-=cut
 open (FILE,"<$inputfile") || die "can't open!\n";
 
 while(<FILE>) {
@@ -41,7 +35,6 @@ while(<FILE>) {
 	}
     }
 }
-=cut
 
   
 sub makesequencematrix{
