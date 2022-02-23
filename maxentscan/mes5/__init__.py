@@ -11,10 +11,10 @@ def score5(seq):
                #print(me2x5[seq_matrix[getrest(item)]])
                #print(scoreconsensus(item))
                result = math.log(scoreconsensus(item) * float(me2x5[seq_matrix[getrest(item)]]),2)
-               result_dic[item] = f'{result:.2f}'
+               result_dic[item] = float(f'{result:.2f}')
           return result_dic
      else:
           result = math.log(scoreconsensus(seq) * float(me2x5[seq_matrix[getrest(seq)]]),2)
           result = f'{result:.2f}'
-          return result
+          return float(result)
          

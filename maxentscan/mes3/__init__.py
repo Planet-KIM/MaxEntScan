@@ -9,11 +9,11 @@ def score3(seq):
             addscore = scoreconsensus(item) * maxentscore(getrest(item), metables)
             result = math.log(addscore, 2)
             result = f'{result:.2f}'
-            result_dic[item] = result
+            result_dic[item] = float(result)
         return result_dic
     else:
         addscore = scoreconsensus(seq) * maxentscore(getrest(seq), metables)
         result = math.log(addscore, 2)
         result = f'{result:.2f}'
-        return result
+        return float(result)
         
