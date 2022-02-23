@@ -1,4 +1,4 @@
-from maxentscan.mes3.util import *
+from maxentscan.mes3.utils import *
 import math
 
 def score3(seq):

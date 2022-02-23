@@ -1,5 +1,5 @@
 import math
-from maxentscan.mes5.util import makescorematrix, makesequencematrix, scoreconsensus, getrest
+from maxentscan.mes5.utils import makescorematrix, makesequencematrix, scoreconsensus, getrest
 
 def score5(seq):
      me2x5 = makescorematrix();
