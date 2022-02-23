@@ -1,4 +1,4 @@
-from maxentscan.mes3.utils import *
+from maxentscan.mes3.utils import makemaxentscores, scoreconsensus, maxentscore, getrest
 import math
 
 def score3(seq):
