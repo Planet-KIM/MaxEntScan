@@ -1,14 +1,8 @@
-import sys
 import os
-import re
-import traceback
-import math
 
-
-def makemaxentscores(splice_model='splicemodels/'):
-    current_path = os.path.dirname(os.path.realpath(__name__))
+def makemaxentscores(splice_model='../datas/splicemodels/'):
+    current_path = os.path.dirname(os.path.realpath(__file__))
     model_path = os.path.join(current_path, splice_model)
-
     me_list = ['me2x3acc1','me2x3acc2','me2x3acc3','me2x3acc4',
 		       'me2x3acc5','me2x3acc6','me2x3acc7','me2x3acc8',
                'me2x3acc9'];
@@ -42,11 +36,11 @@ def hashseq(seq):
     gene = {'A' : 0, "C" : 1, "T" : 3, "G" : 2 }
     seqa = [ gene[item] for item in list(seq)]
     four = [1,4,16,64,256,1024,4096,16384]
-    
+
     line_index = 0
     for index in range(len(seq)):
         line_index += (seqa[index] * four[len(seq) - index  -1 ])
-    return line_index 
+    return line_index
 
 def  maxentscore(seq, metables):
     sc = []
@@ -61,40 +55,3 @@ def  maxentscore(seq, metables):
     sc.append(metables[8][hashseq(seq[14:18])])
     finalscore = sc[0] * sc[1] * sc[2] * sc[3] * sc[4] / (sc[5] * sc[6] * sc[7] * sc[8]);
     return finalscore
-
-
-def score3(seq_list):
-    result_dic = {}
-    metables = makemaxentscores()
-    for seq in seq_list:   
-        print(seq)
-        addscore = scoreconsensus(seq) * maxentscore(getrest(seq), metables)
-        result = math.log(addscore, 2)
-        result = f'{result:.2f}'
-        result_dic[seq] = result
-
-    return result_dic
-
-"""
-if __name__ == '__main__':
-    try:
-        test = sys.argv[1]
-    except ValueError as ve:
-        print(ve)
-        exit()
-    metables = makemaxentscores()
-    seq = score3(test)
-    addscore = scoreconsensus(seq) * maxentscore(getrest(seq), metables)
-    result = math.log(addscore, 2)
-    print(f'{result:.2f}')
- """
-seq_list = [
-        "ctctactactatctatctaggtc",
-        "ctctactactatctatctaggtc",
-        "ctctactactatctatctagctc",
-        "ctctactactatctatctagttc",
-        "ctctactactatctatctagatc",
-        "ctctactactatctatctccctc"
-        ]
-dic = score3(seq_list)
-print(dic)
