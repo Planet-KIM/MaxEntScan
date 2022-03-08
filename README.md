@@ -1,5 +1,4 @@
 # MaxentScan
-==========
 - Algorithms for derivation and scoring of constrained-marginal maximum entropy distributions, with applications to 5' and 3' splice sites.
 - perl version to python3 version
 
